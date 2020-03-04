@@ -33,6 +33,9 @@ typedef unsigned char uint8_t;
 typedef unsigned int uint16_t;
 typedef unsigned long int uint32_t;
 
+bit Fup, Fdown;
+
+
 const unsigned char  sinewave[256] = //256 values
 {
 0x80,0x83,0x86,0x89,0x8c,0x8f,0x92,0x95,0x98,0x9c,0x9f,0xa2,0xa5,0xa8,0xab,0xae,
@@ -60,7 +63,7 @@ void main()
      char *voltage = "00.0";
      char *current = "0.00";
      unsigned char i;
-     unsigned int a, result;
+     unsigned int a, b, result;
      //float result;
 
      TRISA = 0xFF;      // all input
@@ -84,6 +87,8 @@ void main()
     //lcd_puts(2, 1, "Circuit Digest");
     counter = 0;
     result = 0;
+    Fup = 0;
+    Fdown = 0;
     
     for(i=0;i<ADC_ARRAY_SIZE;i++) display[i]=0;
 
@@ -120,13 +125,32 @@ void main()
            
 
            //PORTB = encoder(0,PORTC&0xC0);
-           if(!RC6_bit) counter++;
-           if(!RC7_bit) counter--;
+           if(!RC6_bit) Fup=1;
+           if(Fup)
+           {
+               counter++;
+               Fup=0;
+           }
+           if(!RC7_bit) Fdown=1;
+           if(Fdown)
+           {
+               counter--;
+               Fdown=0;
+           }
            PORTB = counter;
            
            Delay_ms(50);
            //lcd_puts(2, 1, "                ");
            //numToLcd(2,1,PORTB);
+           
+           a = ADC_Read(1); //Reading Analog Channel 1
+           result = 5*a;
+           Delay_ms(100);   //Delay
+           current[0]= result/1000+48;
+           current[2]= (result/100)%10+48;
+           current[3]= (result/10)%10+48;
+           //current[4]= (result/10)%10+48;
+           Lcd_Out(2,10,current);
            
            a = ADC_Read(0); //Reading Analog Channel 0
            result = 3*a;
@@ -137,21 +161,10 @@ void main()
            voltage[0]= result/1000+48;
            voltage[1]= (result/100)%10+48;
            voltage[3]= (result/10)%10+48;
+           //current[4]= (result/10)%10+48;
            Lcd_Out(2,1,voltage);
            
-           Delay_ms(100);
-           
-           a = ADC_Read(1); //Reading Analog Channel 0
-           result = 5*a;
-           //result = (VREF/ADC_RES)*a;
-           //PORTB = a;       //Lower 8 bits to PORTB
-           //PORTC = a>>8;    //Higher 2 bits to PORTC
-           Delay_ms(100);   //Delay
-           current[0]= result/1000+48;
-           current[2]= (result/100)%10+48;
-           current[3]= (result/10)%10+48;
-           //current[4]= (result/10)%10+48;
-           Lcd_Out(2,10,current);
+           Delay_ms(50);
            
            //lcd_putch(row,col+4,'V');
            //do
