@@ -32,8 +32,9 @@ void main(void)
     RBIE   = 1;    // enable PORTB change interrupt
     GIE    = 1;    // enable the global interrupt
     PEIE   = 1;
+   // zachar
 
-
+__delay_ms(1000);
 
     while(1)
     {     
