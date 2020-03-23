@@ -36,18 +36,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2629
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2629: extern volatile __bit PEIE __attribute__((address(0x5E)));
 [v _PEIE `Vb ~T0 @X0 0 e@94 ]
-"24 ./lcd.h
-[; ;./lcd.h: 24: extern void lcd_init(void);
-[v _lcd_init `(v ~T0 @X0 0 ef ]
-"12
-[; ;./lcd.h: 12: extern void lcd_clear(void);
-[v _lcd_clear `(v ~T0 @X0 0 ef ]
-"20
-[; ;./lcd.h: 20: extern void lcd_goto(unsigned char pos);
-[v _lcd_goto `(v ~T0 @X0 0 ef1`uc ]
-"16
-[; ;./lcd.h: 16: extern void lcd_puts(const char * s);
-[v _lcd_puts `(v ~T0 @X0 0 ef1`*Cuc ]
+"2662
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2662: extern volatile __bit RA2 __attribute__((address(0x2A)));
+[v _RA2 `Vb ~T0 @X0 0 e@42 ]
+[v F842 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
+[v __delay `JF842 ~T0 @X0 0 e ]
+[p i __delay ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -289,35 +284,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 "34
 [; ;main.c: 34:     PEIE = 1;
 [e = _PEIE -> -> 1 `i `b ]
-"36
-[; ;main.c: 36:     lcd_init();
-[e ( _lcd_init ..  ]
-"37
-[; ;main.c: 37:     lcd_clear();
-[e ( _lcd_clear ..  ]
 "38
-[; ;main.c: 38:     lcd_goto(0);
-[e ( _lcd_goto (1 -> -> 0 `i `uc ]
-"39
-[; ;main.c: 39:     lcd_puts("test");
-[e ( _lcd_puts (1 :s 1C ]
-"42
-[; ;main.c: 42:     while(1)
+[; ;main.c: 38:     while(1)
 [e :U 98 ]
-"43
-[; ;main.c: 43:     {
+"39
+[; ;main.c: 39:     {
 {
-"45
-[; ;main.c: 45:    }
+"40
+[; ;main.c: 40:         RA2^=1;
+[e =^ _RA2 -> -> -> 1 `i `b `Vb ]
+"41
+[; ;main.c: 41:         _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"43
+[; ;main.c: 43:    }
 }
 [e :U 97 ]
 [e $U 98  ]
 [e :U 99 ]
-"46
-[; ;main.c: 46:     return;
+"44
+[; ;main.c: 44:     return;
 [e $UE 96  ]
-"47
-[; ;main.c: 47: }
+"45
+[; ;main.c: 45: }
 [e :UE 96 ]
 }
-[a 1C 116 101 115 116 0 ]

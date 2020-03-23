@@ -1939,14 +1939,12 @@ void main(void)
     GIE = 1;
     PEIE = 1;
 
-    lcd_init();
-    lcd_clear();
-    lcd_goto(0);
-    lcd_puts("test");
 
 
     while(1)
     {
+        RA2^=1;
+        _delay((unsigned long)((1000)*(20000000/4000.0)));
 
    }
     return;

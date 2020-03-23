@@ -33,14 +33,12 @@ void main(void)
     GIE    = 1;    // enable the global interrupt
     PEIE   = 1;
 
-    lcd_init();
-    lcd_clear();
-    lcd_goto(0);
-    lcd_puts("test");
-    //__delay_ms(1000);
+
 
     while(1)
-    {       
+    {     
+        RA2^=1;
+        __delay_ms(1000);
             
    }
     return;
