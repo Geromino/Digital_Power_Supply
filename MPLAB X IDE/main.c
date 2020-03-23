@@ -78,8 +78,8 @@ void main(void)
     nRBPU  = 0;    // enable pull-ups
     RBIF   = 0;    // clear the interrupt flag
     RBIE   = 1;    // enable PORTB change interrupt
-    GIE    = 1;    // enable the global interrupt
-    PEIE   = 1;
+    GIE    = 0;    // enable the global interrupt
+    PEIE   = 0;
     //ADCON1 = 0xC5;
     //ADCON0 = 0x41;     // RA0 & RA1 as analog input, RA3 as VREF+, all other as digital i/o
     //CMCON = 0x07;      // comperator disable

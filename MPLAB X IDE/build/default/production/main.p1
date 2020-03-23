@@ -380,11 +380,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 80:     RBIE = 1;
 [e = _RBIE -> -> 1 `i `b ]
 "81
-[; ;main.c: 81:     GIE = 1;
-[e = _GIE -> -> 1 `i `b ]
+[; ;main.c: 81:     GIE = 0;
+[e = _GIE -> -> 0 `i `b ]
 "82
-[; ;main.c: 82:     PEIE = 1;
-[e = _PEIE -> -> 1 `i `b ]
+[; ;main.c: 82:     PEIE = 0;
+[e = _PEIE -> -> 0 `i `b ]
 "87
 [; ;main.c: 87:     lcd_init();
 [e ( _lcd_init ..  ]

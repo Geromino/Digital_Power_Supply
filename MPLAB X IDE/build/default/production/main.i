@@ -1959,8 +1959,8 @@ void main(void)
     nRBPU = 0;
     RBIF = 0;
     RBIE = 1;
-    GIE = 1;
-    PEIE = 1;
+    GIE = 0;
+    PEIE = 0;
 
 
 
