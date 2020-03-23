@@ -36,13 +36,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2629
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2629: extern volatile __bit PEIE __attribute__((address(0x5E)));
 [v _PEIE `Vb ~T0 @X0 0 e@94 ]
-"2662
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2662: extern volatile __bit RA2 __attribute__((address(0x2A)));
-[v _RA2 `Vb ~T0 @X0 0 e@42 ]
 [v F842 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
 [v __delay `JF842 ~T0 @X0 0 e ]
 [p i __delay ]
+"2662 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2662: extern volatile __bit RA2 __attribute__((address(0x2A)));
+[v _RA2 `Vb ~T0 @X0 0 e@42 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -284,28 +284,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 "34
 [; ;main.c: 34:     PEIE = 1;
 [e = _PEIE -> -> 1 `i `b ]
-"38
-[; ;main.c: 38:     while(1)
-[e :U 98 ]
-"39
-[; ;main.c: 39:     {
-{
-"40
-[; ;main.c: 40:         RA2^=1;
-[e =^ _RA2 -> -> -> 1 `i `b `Vb ]
-"41
-[; ;main.c: 41:         _delay((unsigned long)((1000)*(20000000/4000.0)));
+"37
+[; ;main.c: 37: _delay((unsigned long)((1000)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"43
-[; ;main.c: 43:    }
+"39
+[; ;main.c: 39:     while(1)
+[e :U 98 ]
+"40
+[; ;main.c: 40:     {
+{
+"41
+[; ;main.c: 41:         RA2^=1;
+[e =^ _RA2 -> -> -> 1 `i `b `Vb ]
+"42
+[; ;main.c: 42:         _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"44
+[; ;main.c: 44:    }
 }
 [e :U 97 ]
 [e $U 98  ]
 [e :U 99 ]
-"44
-[; ;main.c: 44:     return;
-[e $UE 96  ]
 "45
-[; ;main.c: 45: }
+[; ;main.c: 45:     return;
+[e $UE 96  ]
+"46
+[; ;main.c: 46: }
 [e :UE 96 ]
 }

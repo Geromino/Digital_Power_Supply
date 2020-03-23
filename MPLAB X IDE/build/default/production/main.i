@@ -1940,6 +1940,7 @@ void main(void)
     PEIE = 1;
 
 
+_delay((unsigned long)((1000)*(20000000/4000.0)));
 
     while(1)
     {
