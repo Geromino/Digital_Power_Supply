@@ -84,10 +84,10 @@ void main(void)
     //ADCON0 = 0x41;     // RA0 & RA1 as analog input, RA3 as VREF+, all other as digital i/o
     //CMCON = 0x07;      // comperator disable
     
-    lcd_init();
+    /*lcd_init();
     lcd_clear();
     lcd_goto(0x0);
-    lcd_puts("test");
+    lcd_puts("test");*/
 
 
    

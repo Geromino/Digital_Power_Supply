@@ -36,19 +36,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2629
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2629: extern volatile __bit PEIE __attribute__((address(0x5E)));
 [v _PEIE `Vb ~T0 @X0 0 e@94 ]
-"24 ./lcd.h
-[; ;./lcd.h: 24: extern void lcd_init(void);
-[v _lcd_init `(v ~T0 @X0 0 ef ]
-"12
-[; ;./lcd.h: 12: extern void lcd_clear(void);
-[v _lcd_clear `(v ~T0 @X0 0 ef ]
-"20
-[; ;./lcd.h: 20: extern void lcd_goto(unsigned char pos);
-[v _lcd_goto `(v ~T0 @X0 0 ef1`uc ]
-"16
-[; ;./lcd.h: 16: extern void lcd_puts(const char * s);
-[v _lcd_puts `(v ~T0 @X0 0 ef1`*Cuc ]
-"2662 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+"2662
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2662: extern volatile __bit RA2 __attribute__((address(0x2A)));
 [v _RA2 `Vb ~T0 @X0 0 e@42 ]
 [v F842 `(v ~T0 @X0 1 tf1`ul ]
@@ -385,18 +373,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "82
 [; ;main.c: 82:     PEIE = 0;
 [e = _PEIE -> -> 0 `i `b ]
-"87
-[; ;main.c: 87:     lcd_init();
-[e ( _lcd_init ..  ]
-"88
-[; ;main.c: 88:     lcd_clear();
-[e ( _lcd_clear ..  ]
-"89
-[; ;main.c: 89:     lcd_goto(0x0);
-[e ( _lcd_goto (1 -> -> 0 `i `uc ]
-"90
-[; ;main.c: 90:     lcd_puts("test");
-[e ( _lcd_puts (1 :s 5C ]
 "94
 [; ;main.c: 94:     while(1)
 [e :U 98 ]
@@ -687,7 +663,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 223: }
 [e :UE 118 ]
 }
-[a 5C 116 101 115 116 0 ]
 [a 2C 48 46 48 48 0 ]
 [a 4C 48 46 48 48 0 ]
 [a 1C 48 48 46 48 0 ]

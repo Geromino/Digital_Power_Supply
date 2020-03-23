@@ -1961,17 +1961,7 @@ void main(void)
     RBIE = 1;
     GIE = 0;
     PEIE = 0;
-
-
-
-
-    lcd_init();
-    lcd_clear();
-    lcd_goto(0x0);
-    lcd_puts("test");
-
-
-
+# 94 "main.c"
     while(1)
     {
         RA2^=1;
