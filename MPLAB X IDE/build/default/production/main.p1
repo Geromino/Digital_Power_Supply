@@ -9,15 +9,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12
 [; ;./lcd.h: 12: extern void lcd_clear(void);
 [v _lcd_clear `(v ~T0 @X0 0 ef ]
-"37 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\string.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\string.h: 37: extern char * strcpy(char *, const char *);
-[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
-"42 ./lcd_string.h
-[; ;./lcd_string.h: 42: char * ftoa(double f, char * buf, int precision);
-[v _ftoa `(*uc ~T0 @X0 0 ef3`d`*uc`i ]
-"20 ./lcd.h
-[; ;./lcd.h: 20: extern void lcd_goto(unsigned char pos);
-[v _lcd_goto `(v ~T0 @X0 0 ef1`uc ]
 "16
 [; ;./lcd.h: 16: extern void lcd_puts(const char * s);
 [v _lcd_puts `(v ~T0 @X0 0 ef1`*Cuc ]
@@ -261,15 +252,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15
 [; ;main.c: 15:       lcd_clear();
 [e ( _lcd_clear ..  ]
-"16
-[; ;main.c: 16:       strcpy(lcd_float_result,ftoa(5.25,lcd_float_buffer,(2)));
-[e ( _strcpy (2 , &U _lcd_float_result -> ( _ftoa (3 , , .5.25 &U _lcd_float_buffer -> 2 `i `*Cuc ]
-"17
-[; ;main.c: 17:       lcd_goto(0x40);
-[e ( _lcd_goto (1 -> -> 64 `i `uc ]
 "18
-[; ;main.c: 18:       lcd_puts(lcd_float_result);
-[e ( _lcd_puts (1 -> &U _lcd_float_result `*Cuc ]
+[; ;main.c: 18:       lcd_puts("zachar");
+[e ( _lcd_puts (1 :s 1C ]
 "22
 [; ;main.c: 22:     while(1)
 [e :U 98 ]
@@ -289,3 +274,4 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 29: }
 [e :UE 96 ]
 }
+[a 1C 122 97 99 104 97 114 0 ]

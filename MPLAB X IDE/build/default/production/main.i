@@ -1939,9 +1939,9 @@ void main(void)
       PIN_MANAGER_Initialize();
       lcd_init();
       lcd_clear();
-      strcpy(lcd_float_result,ftoa(5.25,lcd_float_buffer,(2)));
-      lcd_goto(0x40);
-      lcd_puts(lcd_float_result);
+
+
+      lcd_puts("zachar");
 
 
 

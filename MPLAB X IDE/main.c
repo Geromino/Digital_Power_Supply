@@ -13,9 +13,9 @@ void main(void)
       PIN_MANAGER_Initialize();
       lcd_init();
       lcd_clear();
-      strcpy(lcd_float_result,ftoa(5.25,lcd_float_buffer,LEVEL_ACCURECTY_FLOAT_TO_STRING));
-      lcd_goto(0x40);
-      lcd_puts(lcd_float_result); 
+     // strcpy(lcd_float_result,ftoa(5.25,lcd_float_buffer,LEVEL_ACCURECTY_FLOAT_TO_STRING));
+    //  lcd_goto(0x40);
+      lcd_puts("zachar"); 
 
       
 
