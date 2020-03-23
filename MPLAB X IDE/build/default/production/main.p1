@@ -9,6 +9,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12
 [; ;./lcd.h: 12: extern void lcd_clear(void);
 [v _lcd_clear `(v ~T0 @X0 0 ef ]
+"20
+[; ;./lcd.h: 20: extern void lcd_goto(unsigned char pos);
+[v _lcd_goto `(v ~T0 @X0 0 ef1`uc ]
 "16
 [; ;./lcd.h: 16: extern void lcd_puts(const char * s);
 [v _lcd_puts `(v ~T0 @X0 0 ef1`*Cuc ]
@@ -252,6 +255,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15
 [; ;main.c: 15:       lcd_clear();
 [e ( _lcd_clear ..  ]
+"17
+[; ;main.c: 17:       lcd_goto(0x0);
+[e ( _lcd_goto (1 -> -> 0 `i `uc ]
 "18
 [; ;main.c: 18:       lcd_puts("zachar");
 [e ( _lcd_puts (1 :s 1C ]

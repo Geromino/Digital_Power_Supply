@@ -1940,7 +1940,7 @@ void main(void)
       lcd_init();
       lcd_clear();
 
-
+      lcd_goto(0x0);
       lcd_puts("zachar");
 
 
