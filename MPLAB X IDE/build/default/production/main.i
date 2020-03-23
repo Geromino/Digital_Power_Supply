@@ -1988,12 +1988,12 @@ void main(void)
             while(!RA4);
             RA2^=1;
             FOutOnOff ^=1;
-            lcd_clear();
+
 
         }
 
-        if(count > 4095) count = 0;
-        if(count < 0) count = 4095;
+        if(adc_count > 4095) adc_count = 0;
+        if(adc_count < 0) adc_count = 4095;
 
 
 

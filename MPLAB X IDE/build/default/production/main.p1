@@ -437,22 +437,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "109
 [; ;main.c: 109:             FOutOnOff ^=1;
 [e =^ F1002 -> -> -> 1 `i `b `b ]
-"110
-[; ;main.c: 110:             lcd_clear();
-[e ( _lcd_clear ..  ]
 "112
 [; ;main.c: 112:         }
 }
 [e :U 100 ]
 "114
-[; ;main.c: 114:         if(count > 4095) count = 0;
-[e $ ! > _count -> 4095 `i 104  ]
-[e = _count -> 0 `i ]
+[; ;main.c: 114:         if(adc_count > 4095) adc_count = 0;
+[e $ ! > _adc_count -> 4095 `i 104  ]
+[e = _adc_count -> 0 `i ]
 [e :U 104 ]
 "115
-[; ;main.c: 115:         if(count < 0) count = 4095;
-[e $ ! < _count -> 0 `i 105  ]
-[e = _count -> 4095 `i ]
+[; ;main.c: 115:         if(adc_count < 0) adc_count = 4095;
+[e $ ! < _adc_count -> 0 `i 105  ]
+[e = _adc_count -> 4095 `i ]
 [e :U 105 ]
 "119
 [; ;main.c: 119:             PORTD = adc_count;
