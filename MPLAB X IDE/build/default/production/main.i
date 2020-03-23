@@ -1917,34 +1917,11 @@ extern unsigned int ADC_Read(unsigned char channel);
 #pragma config WRT = OFF
 #pragma config CP = OFF
 # 14 "main.c" 2
-# 32 "main.c"
-signed int count=0;
-char temp[15];
-unsigned char i;
-# 44 "main.c"
-void pbchange(void);
-void reverse(char* str, int len);
-int intToStr(int x, char str[], int d);
-void ftoa(float n, char* res, int afterpoint);
+
+
 
 void main(void)
 {
-
-    char *voltage = "00.0";
-    char *current = "0.00";
-    char *_prevVoltage = "00.0";
-    char *_prevCurrent = "0.00";
-    float currentLimit = 0.00;
-    float voltageLimit = 15.2;
-
-
-    static __bit FOutOnOff;
-    unsigned int a, b;
-    signed int adc_count;
-    float current_res;
-    float voltage_res;
-    float result;
-    float OldResult;
 
 
     TRISA = 0b00011011;
@@ -1962,205 +1939,15 @@ void main(void)
     GIE = 1;
     PEIE = 1;
 
-
-
-
     lcd_init();
     lcd_clear();
-
-
-
-
-    ADC_Init();
-
-
-
-
+    lcd_goto(0);
+    lcd_puts("test");
 
 
     while(1)
     {
 
-
-        if(!RA4)
-        {
-
-            while(!RA4);
-            RA2^=1;
-            FOutOnOff ^=1;
-
-
-        }
-
-        if(adc_count > 4095) adc_count = 0;
-        if(adc_count < 0) adc_count = 4095;
-
-
-
-            PORTD = adc_count;
-            PORTC = (adc_count>>8)&0x0F;
-# 132 "main.c"
-        a = ADC_Read(1);
-        current_res = a*0.0048875;
-        ftoa(current_res*10,temp,2);
-
-        lcd_goto(0x40);
-        lcd_puts(temp);
-
-        lcd_puts("[A]  ");
-        ftoa(currentLimit,temp,2);
-        lcd_goto(0x49);
-        lcd_puts("[");
-        lcd_puts(temp);
-        lcd_puts("]");
-
-
-
-        b = ADC_Read(0);
-        voltage_res = b*0.029768;
-        ftoa(voltage_res-current_res,temp,1);
-
-        lcd_goto(0x0);
-        lcd_puts(temp);
-
-        lcd_puts("[V]  ");
-        ftoa(voltageLimit,temp,1);
-        lcd_goto(0x9);
-        lcd_puts("[");
-        lcd_puts(temp);
-        lcd_puts("]");
-
-        if(FOutOnOff)
-        {
-            if(!RB4)
-            {
-
-                voltageLimit += 0.1;
-
-
-
-
-
-
-                _delay((unsigned long)((500)*(20000000/4000.0)));
-            }
-            else if(!RB5)
-            {
-                voltageLimit -= 0.1;
-                _delay((unsigned long)((500)*(20000000/4000.0)));
-            }
-            adc_count = (int)(((voltageLimit*4095)/30.5)+a);
-            if(voltageLimit>=30.5) voltageLimit=30.5;
-            if(voltageLimit<=0) voltageLimit=00.0;
-
-
-
-
-
-        }
-        else adc_count = 0;
-
    }
     return;
-}
-
-
-
-void reverse(char* str, int len)
-{
-    int i = 0, j = len - 1, temp;
-    while (i < j) {
-        temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-        i++;
-        j--;
-    }
-}
-
-
-
-
-int intToStr(int x, char str[], int d)
-{
-    int i = 0;
-    while (x) {
-        str[i++] = (x % 10) + '0';
-        x = x / 10;
-    }
-
-
-
-    while (i < d)
-        str[i++] = '0';
-
-    reverse(str, i);
-    str[i] = '\0';
-    return i;
-}
-
-void ftoa(float n, char* res, int afterpoint)
-{
-
-    int ipart = (int)n;
-
-
-    float fpart = n - (float)ipart;
-
-
-    int i = intToStr(ipart, res, 1);
-
-
-    if (afterpoint != 0) {
-        res[i] = '.';
-
-
-
-
-        fpart = fpart * pow(10, afterpoint);
-
-        intToStr((int)fpart, res + i + 1, afterpoint);
-    }
-}
-# 274 "main.c"
-void pbchange(void)
-{
-    unsigned char state;
-    static unsigned char oldstate;
-    _delay((unsigned long)((1)*(20000000/4000.0)));
-
-
-    state= (PORTBbits.RB5<<1 | PORTBbits.RB4);
-    if(oldstate==0x0)
-    {
-        if( state ==0x1)
-        {
-            count--;
-
-        }
-        else if( state == 0x2)
-        {
-            count++;
-
-        }
-    }
-    oldstate = state;
-
-    PORTB = PORTB;
-    INTCONbits.RBIF = 0;
-}
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void)
-{
-    if(RBIF==1)
-    {
-
-
-        pbchange();
-        RBIF = 0;
-
-
-    }
 }
