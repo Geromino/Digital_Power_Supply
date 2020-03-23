@@ -99,13 +99,14 @@ void main(void)
     */
     while(1)
     {
-        
+        RA2^=1;
+        __delay_ms(500);
                
         if(!RA4)
         {
             //lcd_clear();
             while(!RA4);
-            RA2^=1;
+            
             FOutOnOff ^=1;
             //lcd_clear();
             //lcd_clear();

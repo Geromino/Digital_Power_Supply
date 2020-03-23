@@ -1980,13 +1980,14 @@ void main(void)
 
     while(1)
     {
-
+        RA2^=1;
+        _delay((unsigned long)((500)*(20000000/4000.0)));
 
         if(!RA4)
         {
 
             while(!RA4);
-            RA2^=1;
+
             FOutOnOff ^=1;
 
 
@@ -1999,7 +2000,7 @@ void main(void)
 
             PORTD = adc_count;
             PORTC = (adc_count>>8)&0x0F;
-# 132 "main.c"
+# 133 "main.c"
         a = ADC_Read(1);
         current_res = a*0.0048875;
         ftoa(current_res*10,temp,2);
@@ -2122,7 +2123,7 @@ void ftoa(float n, char* res, int afterpoint)
         intToStr((int)fpart, res + i + 1, afterpoint);
     }
 }
-# 274 "main.c"
+# 275 "main.c"
 void pbchange(void)
 {
     unsigned char state;
