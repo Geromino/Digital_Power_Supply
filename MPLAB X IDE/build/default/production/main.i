@@ -1967,14 +1967,8 @@ void main(void)
 
     lcd_init();
     lcd_clear();
-
-
-
-
-    ADC_Init();
-
-
-
+    lcd_goto(0x0);
+    lcd_puts("test");
 
 
 
@@ -1983,83 +1977,7 @@ void main(void)
         RA2^=1;
         _delay((unsigned long)((500)*(20000000/4000.0)));
 
-        if(!RA4)
-        {
 
-            while(!RA4);
-
-            FOutOnOff ^=1;
-
-
-        }
-
-        if(adc_count > 4095) adc_count = 0;
-        if(adc_count < 0) adc_count = 4095;
-
-
-
-            PORTD = adc_count;
-            PORTC = (adc_count>>8)&0x0F;
-# 133 "main.c"
-        a = ADC_Read(1);
-        current_res = a*0.0048875;
-        ftoa(current_res*10,temp,2);
-
-        lcd_goto(0x40);
-        lcd_puts(temp);
-
-        lcd_puts("[A]  ");
-        ftoa(currentLimit,temp,2);
-        lcd_goto(0x49);
-        lcd_puts("[");
-        lcd_puts(temp);
-        lcd_puts("]");
-
-
-
-        b = ADC_Read(0);
-        voltage_res = b*0.029768;
-        ftoa(voltage_res-current_res,temp,1);
-
-        lcd_goto(0x0);
-        lcd_puts(temp);
-
-        lcd_puts("[V]  ");
-        ftoa(voltageLimit,temp,1);
-        lcd_goto(0x9);
-        lcd_puts("[");
-        lcd_puts(temp);
-        lcd_puts("]");
-
-        if(FOutOnOff)
-        {
-            if(!RB4)
-            {
-
-                voltageLimit += 0.1;
-
-
-
-
-
-
-                _delay((unsigned long)((500)*(20000000/4000.0)));
-            }
-            else if(!RB5)
-            {
-                voltageLimit -= 0.1;
-                _delay((unsigned long)((500)*(20000000/4000.0)));
-            }
-            adc_count = (int)(((voltageLimit*4095)/30.5)+a);
-            if(voltageLimit>=30.5) voltageLimit=30.5;
-            if(voltageLimit<=0) voltageLimit=00.0;
-
-
-
-
-
-        }
-        else adc_count = 0;
 
    }
     return;
@@ -2123,7 +2041,7 @@ void ftoa(float n, char* res, int afterpoint)
         intToStr((int)fpart, res + i + 1, afterpoint);
     }
 }
-# 275 "main.c"
+# 183 "main.c"
 void pbchange(void)
 {
     unsigned char state;

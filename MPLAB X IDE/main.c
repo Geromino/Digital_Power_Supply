@@ -86,109 +86,17 @@ void main(void)
     
     lcd_init();
     lcd_clear();
-    //lcd_puts("test");
-    //__delay_ms(1000);
-    //lcd_clear();
-    //r_init();
-    ADC_Init();      //Initializes ADC Module
-    /*
-    OPTION_REGbits.nRBPU = 1; // disable pull-ups
-    INTCONbits.RBIF   = 0;    // clear the interrupt flag
-    INTCONbits.RBIE   = 1;    // enable PORTB change interrupt
-    INTCONbits.GIE    = 1;    // enable the global interrupt
-    */
+    lcd_goto(0x0);
+    lcd_puts("test");
+
+
+   
     while(1)
     {
         RA2^=1;
         __delay_ms(500);
                
-        if(!RA4)
-        {
-            //lcd_clear();
-            while(!RA4);
-            
-            FOutOnOff ^=1;
-            //lcd_clear();
-            //lcd_clear();
-        }
-        
-        if(adc_count > 4095) adc_count = 0;
-        if(adc_count < 0) adc_count = 4095;
-        //if(RA2)
-        //{
-            
-            PORTD = adc_count;
-            PORTC = (adc_count>>8)&0x0F;
-            //PORTD = count;
-            //PORTC = (count>>8)&0x0F;
-
-        //}
-        /*else
-        {
-            PORTD = 0;
-            PORTC = PORTC & 0xF0;
-        }*/
-        //lcd_clear();
-            
-        a = ADC_Read(1); //Reading Analog Channel 1
-        current_res = a*KI;
-        ftoa(current_res*10,temp,2);    //ftoa(a*0.048875,temp,2);
-        //lcd_write(0xC1);
-        lcd_goto(0x40);
-        lcd_puts(temp);   
-        //lcd_goto(20);
-        lcd_puts("[A]  ");   
-        ftoa(currentLimit,temp,2);
-        lcd_goto(0x49);
-        lcd_puts("["); 
-        lcd_puts(temp);  
-        lcd_puts("]"); 
-        
-        //__delay_ms(10);
- 
-        b = ADC_Read(0); //Reading Analog Channel 0
-        voltage_res = b*KV;
-        ftoa(voltage_res-current_res,temp,1);    //ftoa(b*0.029768-a*0.0048875,temp,2);
-        //lcd_write(0xC1);
-        lcd_goto(0x0);
-        lcd_puts(temp);   
-        //lcd_goto(5);
-        lcd_puts("[V]  ");  
-        ftoa(voltageLimit,temp,1);   // intToStr(count,temp,3);
-        lcd_goto(0x9);
-        lcd_puts("["); 
-        lcd_puts(temp);   
-        lcd_puts("]"); 
-            
-        if(FOutOnOff)
-        {
-            if(!RB4) 
-            {
-                //voltageLimit += 0.01;
-                voltageLimit += 0.1;
-                //result =(((voltageLimit*4095)/30.5)+a); 
-                //count = (int)result;
-                //adc_count = (int)(((voltageLimit*4095)/30.5)+a);    // count = (int)(((voltageLimit*4095)/30.5)+a); 
-                //OldResult = result*10;
-                //if(((int)OldResult%10) >= 5) count++;
-                //else count--;
-                __delay_ms(500);
-            }
-            else if(!RB5)
-            {
-                voltageLimit -= 0.1;
-                __delay_ms(500);
-            }
-            adc_count = (int)(((voltageLimit*4095)/30.5)+a);    // count = (int)(((voltageLimit*4095)/30.5)+a); 
-            if(voltageLimit>=30.5) voltageLimit=30.5;
-            if(voltageLimit<=0) voltageLimit=00.0;
-            
-            //if(current_res <= currentLimit)
-            //{
-            //    count = (int)(voltageLimit*4095)/30.5; 
-            //}
-        }
-        else adc_count = 0;
+      
             
    }
     return;
