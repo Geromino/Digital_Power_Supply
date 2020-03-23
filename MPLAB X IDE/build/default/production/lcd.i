@@ -1756,7 +1756,7 @@ void
 lcd_write(unsigned char c)
 {
  _delay((unsigned long)((40)*(20000000/4000000.0)));
- PORTB = ( ( c >> 4 ) & 0x0F );
+ PORTB = ( ( c >> 4 ) & 0xF0 );
  ((RC5 = 1),(RC5=0));
  PORTB = ( c & 0x0F );
  ((RC5 = 1),(RC5=0));

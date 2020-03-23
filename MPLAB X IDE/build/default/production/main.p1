@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"84 ./pin_manager.h
-[; ;./pin_manager.h: 84: void PIN_MANAGER_Initialize(void);
+"83 ./pin_manager.h
+[; ;./pin_manager.h: 83: void PIN_MANAGER_Initialize(void);
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
 "24 ./lcd.h
 [; ;./lcd.h: 24: extern void lcd_init(void);
@@ -276,9 +276,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "23
 [; ;main.c: 23:     {
 {
-"24
-[; ;main.c: 24:            lcd_puts(lcd_float_result);
-[e ( _lcd_puts (1 -> &U _lcd_float_result `*Cuc ]
 "25
 [; ;main.c: 25:            _delay((unsigned long)((1000)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]

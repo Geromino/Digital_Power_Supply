@@ -1900,7 +1900,7 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 34 "./pin_manager.h" 2
-# 84 "./pin_manager.h"
+# 83 "./pin_manager.h"
 void PIN_MANAGER_Initialize(void);
 # 5 "main.c" 2
 
@@ -1947,7 +1947,7 @@ void main(void)
 
     while(1)
     {
-           lcd_puts(lcd_float_result);
+
            _delay((unsigned long)((1000)*(20000000/4000.0)));
 
     }

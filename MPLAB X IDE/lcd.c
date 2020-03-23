@@ -38,7 +38,7 @@ void
 lcd_write(unsigned char c)
 {
 	__delay_us(40);
-	LCD_DATA = ( ( c >> 4 ) & 0x0F );
+	LCD_DATA = ( ( c >> 4 ) & 0xF0 );
 	LCD_STROBE();
 	LCD_DATA = ( c & 0x0F );
 	LCD_STROBE();

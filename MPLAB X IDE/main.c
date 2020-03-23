@@ -21,7 +21,7 @@ void main(void)
 
     while(1)
     {
-           lcd_puts(lcd_float_result); 
+         
            __delay_ms(1000);
         
     }
